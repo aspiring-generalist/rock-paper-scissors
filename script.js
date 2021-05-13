@@ -34,54 +34,30 @@ function game() {
     //Play a round of the game
     function playRound(playerSelection, computerSelection) {
         let result;
-        if (playerSelection === "rock") {
-            switch(computerSelection) {
-                case "paper":
-                    result = "Lose!";
-                    computerScore += 1;
-                    break;
 
-                case "scissors":
-                    result = "Win!";
-                    playerScore += 1;
-                    break;
-                
-                default:
-                    result = "Draw!"
-            }
-        } else if (playerSelection === "paper") {
-            switch(computerSelection) {
-                case "rock":
-                    result = "Win!";
-                    playerScore += 1;
-                    break;
+        //Draw
+        if (playerSelection === computerSelection) {
+            result = "Draw!"
 
-                case "scissors":
-                    result = "Lose!";
-                    computerScore += 1;
-                    break;
-                
-                default:
-                    result = "Draw!"
-            }
-        } else if (playerSelection === "scissors") {
-            switch(computerSelection) {
-                case "rock":
-                    result = "Lose!";
-                    computerScore += 1;
-                    break;
+        //Player Wins
+        } else if ((playerSelection === "rock" && computerSelection === "scissors") ||
+        (playerSelection === "paper" && computerSelection === "rock") ||
+        (playerSelection === "scissors" && computerSelection === "paper")) {
+            result = "Win!"; 
+            playerScore += 1;
 
-                case "paper":
-                    result = "Win!";
-                    playerScore += 1;
-                    break;
-                
-                default:
-                    result = "Draw!"
-            }
+        //Computer Wins
+        } else if ((playerSelection === "scissors" && computerSelection === "rock") ||
+        (playerSelection === "rock" && computerSelection === "paper") ||
+        (playerSelection === "paper" && computerSelection === "scissors")) {
+            result = "Lose!";
+            computerScore += 1;
+
+        //Invalid Selection
         } else {
-            result = ("Please enter rock, paper, or scissors.");
+            result = "Please enter rock, paper, or scissors."
         }
+        
         return result;
     }
     
