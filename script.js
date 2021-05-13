@@ -79,7 +79,7 @@ function game() {
     } else if (playerScore < computerScore) {
         console.log("Final Results: Computer wins!");
     } else {
-        console.log("Final Results: Draw!");
+        console.log("Draw!");
     }
 
     function playAgain() {
